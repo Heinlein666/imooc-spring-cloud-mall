@@ -77,4 +77,5 @@ public class UserServiceImpl implements UserService {
         //1是普通用户，2是管理员，3是测试用户
         return user.getRole().equals(2);
     }
+
 }

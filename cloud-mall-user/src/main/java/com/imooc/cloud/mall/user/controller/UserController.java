@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -121,5 +122,16 @@ public class UserController {
         } else {
             return ApiRestResponse.error(ImoocMallExceptionEnum.NEED_ADMIN);
         }
+    }
+
+    /**
+     * check whether user is an admin
+     * @param user
+     * @return
+     */
+    @PostMapping("checkAdminRole")
+    @ResponseBody
+    public Boolean checkAdminRole(@RequestBody User user) {
+        return userService.checkAdminRole(user);
     }
 }
